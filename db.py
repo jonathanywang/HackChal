@@ -94,7 +94,8 @@ class Recipe(db.Model):
             "id": self.id,
             "title": self.title,
             "post_date": self.post_date,
-            "number_of_likes": self.number_of_likes
+            "number_of_likes": self.number_of_likes,
+            "image_url" : self.image_url
         }
     
     def is_valid_recipe_id(self, recipe_id):
