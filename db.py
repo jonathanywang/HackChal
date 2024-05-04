@@ -58,7 +58,7 @@ class Recipe(db.Model):
     post_date = db.Column(db.String, nullable=False)
     number_of_likes = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    image = db.Column(db.String, nullable = False)
+    image_url = db.Column(db.String, nullable = False)
     
     comments = db.relationship("Comment", cascade="delete")
 
@@ -70,7 +70,7 @@ class Recipe(db.Model):
         self.post_date = kwargs.get("post_date", "")
         self.number_of_likes = 0
         self.user_id = kwargs.get("user_id", None)
-        self.image = kwargs.get("image", "")
+        self.image_url = kwargs.get("image_url", "")
 
     def serialize(self):
         """
@@ -82,7 +82,7 @@ class Recipe(db.Model):
             "post_date": self.post_date,
             "number_of_likes": self.number_of_likes,
             "user_id": self.user_id,
-            "image": self.image,
+            "image_url": self.image_url,
             "recipe_comments": [c.simple_serialize_for_recipe() for c in self.comments]
         }
 
