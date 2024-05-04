@@ -105,6 +105,7 @@ def create_recipe(user_id):
     new_recipe = Recipe(
         title = body.get("title"),
         post_date = body.get("post_date"),
+        image= body.get("image", ""),
         user_id = user_id
     )
 
