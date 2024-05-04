@@ -198,5 +198,24 @@ def delete_comment(comment_id):
     db.session.commit()
     return success_response(comment.serialize())
 
+@app.route("/api/recipes/<int:recipe_id>/comments/")
+def recipe_comments(recipe_id):
+    """
+    Endpoint for getting comments for specfic recipe
+    """
+    recipe = Recipe.query.filter_by(id=recipe_id).first()
+    if recipe is None:
+        return failure_response("Recipe not found!")
+    
+
+    comments = Comment.query.filter_by(recipe_id=recipe_id)
+    if comments is None:
+        return failure_response("Recipe has no comments!")
+    
+    
+    return success_response({"comments": [c.serialize() for c in comments]})
+
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
