@@ -52,7 +52,7 @@ class Recipe(db.Model):
     """
     Recipe model
     """
-    __tablename__ = "nrecipes"
+    __tablename__ = "recipes"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String, nullable=False)
     post_date = db.Column(db.String, nullable=False)
@@ -116,7 +116,7 @@ class Comment(db.Model):
     number_of_likes = db.Column(db.Integer, nullable=False)
     number_of_dislikes = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    recipe_id = db.Column(db.Integer, db.ForeignKey("nrecipes.id"), nullable=False)
+    recipe_id = db.Column(db.Integer, db.ForeignKey("recipes.id"), nullable=False)
 
     def __init__(self, **kwargs):
         """

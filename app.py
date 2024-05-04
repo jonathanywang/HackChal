@@ -7,7 +7,7 @@ from flask import Flask, request
 from db import User, Recipe, Comment
 
 app = Flask(__name__)
-db_filename = "test1.db"
+db_filename = "test2.db"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///%s" % db_filename
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
